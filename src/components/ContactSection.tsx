@@ -27,14 +27,14 @@ const ContactSection = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       const data = await res.json();
-      if (data.success) {
+      if (res.ok) {
         toast({
           title: "Message Sent! 🚀",
           description: "Thanks for reaching out! Please check your email for confirmation.",
@@ -44,7 +44,7 @@ const ContactSection = () => {
       } else {
         toast({
           title: "Error ❌",
-          description: "Failed to send your message. Please try again.",
+          description: data.message || "Failed to send your message. Please try again.",
           duration: 5000,
         });
       }
@@ -67,7 +67,7 @@ const ContactSection = () => {
             Let's Connect
           </h2>
           <p className="text-xl text-off-white/80 max-w-2xl mx-auto">
-            Ready to bring your next project to life? Let's discuss how we can work together.
+              Ready to bring your next project to life? Let's discuss how we can work together.
           </p>
         </div>
 
