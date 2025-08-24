@@ -1,4 +1,4 @@
- import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer';
 
 export default async function handler(request, response) {
   if (request.method !== 'POST') {
@@ -21,7 +21,7 @@ export default async function handler(request, response) {
   try {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Sends the email to your own address
+      to: 'haridarshanhari123@gmail.com', // Sends the email to your desired address
       subject: `New Message from ${name}: ${subject}`,
       html: `
         <p><strong>Name:</strong> ${name}</p>
